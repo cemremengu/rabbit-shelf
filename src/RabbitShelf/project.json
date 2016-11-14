@@ -1,0 +1,14 @@
+﻿{
+  "version": "0.1.0-alpha",
+
+  "dependencies": {
+    "Autofac": "4.2.0",
+    "EasyNetQ": "0.63.5.454",
+    "Topshelf": "4.0.3"
+  },
+
+  "frameworks": {
+    "net452": {
+    }
+  }
+}

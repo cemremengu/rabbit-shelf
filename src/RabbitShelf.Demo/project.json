@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0-*",
+  "buildOptions": {
+    "emitEntryPoint": true
+  },
+
+  "dependencies": {
+    "RabbitShelf": "0.1.0-alpha"
+  },
+
+  "frameworks": {
+    "net452": {
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+
+    <title>RabbitShelf</title>
+    
+    <id>RabbitShelf</id>
+
+    <version>0.1.0-alpha</version>
+
+    <authors>Cemre Mengu</authors>
+
+    <owners>cemremengu</owners>
+
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/cemremengu/rabbit-on-topshelf</projectUrl>
+
+    <!-- The icon is used in Visual Studio's package manager UI -->
+    <iconUrl>http://github.com/contoso/UsefulStuff/nuget_icon.png</iconUrl>
+
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+
+    <description>A tiny service framework with RabbitMQ and Topshelf</description>
+
+    <copyright>Copyright ©2016 Cemre Mengu</copyright>
+
+    <!-- Tags appear in the gallery and can be used for tag searches -->
+    <tags>easynetq rabbitmq topshelf service</tags>
+
+    <!-- Dependencies are automatically installed when the package is installed -->
+    <dependencies>
+      <dependency id="Autofac" version="4.2.0" />
+      <dependency id="EasyNetQ" version="0.63.5.454" />
+      <dependency id="Topshelf" version="4.0.3" />
+    </dependencies>
+  </metadata>
+
+  <files>
+    <file src="build\RabbitShelf.dll" target="lib\net45" />
+    <file src="build\RabbitShelf.pdb" target="lib\net45" />
+
+  </files>
+</package>

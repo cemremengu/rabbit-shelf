@@ -1,0 +1,7 @@
+version: 0.1.{build}
+configuration: Release
+before_build:
+  - nuget restore
+build:
+  project: RabbitOnTopshelf.sln 
+  verbosity: minimal

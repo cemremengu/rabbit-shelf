@@ -1,13 +1,14 @@
-# rabbit-on-topshelf [![Build status](https://ci.appveyor.com/api/projects/status/usfcl6eegl7qj50l?svg=true)](https://ci.appveyor.com/project/cemremengu/rabbit-on-topshelf)
+# rabbit-shelf [![Build status](https://ci.appveyor.com/api/projects/status/wg46aoqycv3h7qvi?svg=true)](https://ci.appveyor.com/project/cemremengu/rabbit-shelf)
+
 A tiny service framework with RabbitMQ and Topshelf
 
 # Usage
 - Create a console project
-- Define your service by extending `TopshelfServiceBase`
+- Define your service by extending `Shelf`
 - Define your logger by implementing `IEasyNetQLogger`
 - Type:
 ```cs
- new RabbitOnTopshelf<MyService, MyLogger>()
+ new RabbitShelf<MyService, MyLogger>()
  {
     Description = "There is a rabbit on top shelf!", 
     DisplayName = "Rabbit on top-shelf demo", 

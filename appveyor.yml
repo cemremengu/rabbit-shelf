@@ -3,5 +3,5 @@ configuration: Release
 before_build:
   - nuget restore
 build:
-  project: RabbitOnTopshelf.sln 
+  project: RabbitShelf.sln 
   verbosity: minimal

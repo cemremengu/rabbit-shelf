@@ -1,5 +1,5 @@
 ## rabbit-shelf [![Build status](https://ci.appveyor.com/api/projects/status/wg46aoqycv3h7qvi?svg=true)](https://ci.appveyor.com/project/cemremengu/rabbit-shelf) [![NuGet version](https://img.shields.io/nuget/v/RabbitShelf.svg?style=flat)](https://www.nuget.org/packages/RabbitShelf)
-A tiny service framework with RabbitMQ and Topshelf
+A tiny service framework with [EasyNetQ](http://easynetq.com/) & [Topshelf](http://topshelf-project.com/)
 
 ## Usage
 - Create a console project
@@ -22,11 +22,5 @@ Absolutely! Please feel free to raise issues, fork the source code, send pull re
 
 ## Credits
 
-A big thank you goes to the maintainers of:
+This package is partly based on [this](https://github.com/EasyNetQ/EasyNetQ/wiki/Wiring-up-EasyNetQ-with-TopShelf-and-Windsor) example.
 
-- EasyNetQ (https://github.com/EasyNetQ/EasyNetQ)
-- Topshelf (https://github.com/Topshelf/Topshelf)
-
-This code is partly based on the example at:
-
-https://github.com/EasyNetQ/EasyNetQ/wiki/Wiring-up-EasyNetQ-with-TopShelf-and-Windsor

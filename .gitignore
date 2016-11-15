@@ -251,3 +251,7 @@ paket-files/
 # JetBrains Rider
 .idea/
 *.sln.iml
+
+[Tt]ools/Cake.*
+[Tt]ools/Addins/
+/build/

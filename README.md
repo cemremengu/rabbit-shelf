@@ -3,7 +3,7 @@ A tiny service framework with [EasyNetQ](http://easynetq.com/) & [Topshelf](http
 
 ## Usage
 - Create a console project
-- Define your service by extending `AdvancedShelf` (for IAdvancedBus) or `Shelf` (for IBus)
+- Define your service by extending `AdvancedShelf` (`IAdvancedBus`) or `Shelf` (`IBus`)
 - Define your logger by implementing `IEasyNetQLogger`
 - Type:
 ```cs

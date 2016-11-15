@@ -22,6 +22,8 @@ public class Program
 ```
 - Have fun!
 
+See `RabbitShelf.Demo` for a more concrete example.
+
 ## Can I help to improve it and/or fix bugs? ##
 
 Absolutely! Please feel free to raise issues, fork the source code, send pull requests, etc.

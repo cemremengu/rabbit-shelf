@@ -20,7 +20,7 @@ public class Program
 	}
 }
 ```
--Go!
+- Have fun!
 
 ## Can I help to improve it and/or fix bugs? ##
 

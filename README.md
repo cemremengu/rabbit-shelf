@@ -7,14 +7,20 @@ A tiny service framework with [EasyNetQ](http://easynetq.com/) & [Topshelf](http
 - Define your logger by implementing `IEasyNetQLogger`
 - Type:
 ```cs
- new RabbitShelf<MyService, MyLogger>()
- {
-    Description = "There is a rabbit on top shelf!", 
-    DisplayName = "Rabbit on top-shelf demo", 
-    ServiceName = "Demo"
- }.Run();
+public class Program
+{
+	public static void Main(string[] args)
+	{
+		 new RabbitShelf<MyService, MyLogger>()
+		 {
+			Description = "There is a rabbit on top shelf!", 
+			DisplayName = "Rabbit on top-shelf demo", 
+			ServiceName = "Demo"
+		 }.Run();
+	}
+}
 ```
-- Go!
+-Go!
 
 ## Can I help to improve it and/or fix bugs? ##
 

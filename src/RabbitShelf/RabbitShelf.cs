@@ -1,11 +1,12 @@
 ﻿namespace RabbitShelf
 {
+    using System;
     using Autofac;
     using EasyNetQ;
     using Topshelf;
     using IContainer = Autofac.IContainer;
 
-    public class RabbitShelf<TService, TLogger> where TService : Shelf where TLogger : IEasyNetQLogger, new()
+    public class RabbitShelf<TService, TLogger> where TService : AdvancedShelf where TLogger : IEasyNetQLogger, new()
     {
         private IContainer _container;
         private readonly ContainerBuilder _builder;
@@ -15,7 +16,20 @@
             _builder = new ContainerBuilder();
 
             _builder.RegisterType<TService>().As<IRabbit>();
-            _builder.RegisterInstance(RabbitBusBuilder.CreateMessageBus<TLogger>(host, port)).As<IAdvancedBus>();
+
+            if (typeof(TService).IsSubclassOf(typeof(AdvancedShelf)))
+            {
+                _builder.RegisterInstance(RabbitBusBuilder.CreateAdvancedMessageBus<TLogger>(host, port))
+                    .As<IAdvancedBus>();
+            }
+            else if(typeof(TService).IsSubclassOf(typeof(Shelf)))
+            {
+                _builder.RegisterInstance(RabbitBusBuilder.CreateMessageBus<TLogger>(host, port)).As<IBus>();
+            }
+            else
+            {
+                throw new ArgumentException("Your service should either inherit from Shelf or AdvancedShelf");
+            }
         }
 
         public string Description { get; set; }

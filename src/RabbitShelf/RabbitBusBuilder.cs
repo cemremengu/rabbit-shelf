@@ -5,7 +5,7 @@
 
     internal class RabbitBusBuilder
     {
-        public static IAdvancedBus CreateMessageBus<TLogger>(string host, ushort port) where TLogger : IEasyNetQLogger, new()
+        public static IAdvancedBus CreateAdvancedMessageBus<TLogger>(string host, ushort port) where TLogger : IEasyNetQLogger, new()
         {
             var hostConfiguration = new HostConfiguration {Host = host, Port = port};
 
@@ -18,6 +18,21 @@
 
             return RabbitHutch.CreateBus($"host={host}:{port}",
                 service => service.Register<IEasyNetQLogger>(_ => new TLogger())).Advanced;
+        }
+
+        public static IBus CreateMessageBus<TLogger>(string host, ushort port) where TLogger : IEasyNetQLogger, new()
+        {
+            var hostConfiguration = new HostConfiguration { Host = host, Port = port };
+
+            var connection = new ConnectionConfiguration
+            {
+                Hosts = new List<HostConfiguration> { hostConfiguration }
+            };
+
+            connection.Validate();
+
+            return RabbitHutch.CreateBus($"host={host}:{port}",
+                service => service.Register<IEasyNetQLogger>(_ => new TLogger()));
         }
     }
 }

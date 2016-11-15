@@ -9,12 +9,12 @@
         {
         }
 
-        protected Shelf(IAdvancedBus bus)
+        protected Shelf(IBus bus)
         {
             Bus = bus;
         }
 
-        public IAdvancedBus Bus { get; }
+        public IBus Bus { get; }
 
         public virtual void Start()
         {

@@ -3,7 +3,7 @@
     using System;
     using EasyNetQ;
 
-    public class MyService : Shelf
+    public class MyService : AdvancedShelf
     {
         private readonly IAdvancedBus _bus;
 

@@ -5,7 +5,9 @@
   },
 
   "dependencies": {
-    "RabbitShelf": "0.1.0-alpha"
+    "RabbitShelf": {
+            "target": "project"
+        }
   },
 
   "frameworks": {

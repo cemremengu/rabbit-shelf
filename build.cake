@@ -7,7 +7,7 @@ using System.Xml.XPath;
 var target = Argument<string>("target", "Default");
 var source = Argument<string>("source", null);
 var apiKey = Argument<string>("apikey", null);
-var version = Argument<string>("targetversion", "0.1.0-alpha" + (EnvironmentVariable("APPVEYOR_BUILD_NUMBER") ?? "0"));
+var version = Argument<string>("targetversion", "0.1.0-alpha");
 var skipClean = Argument<bool>("skipclean", false);
 var skipTests = Argument<bool>("skiptests", false);
 var nogit = Argument<bool>("nogit", false);
@@ -102,17 +102,18 @@ Task("Publish")
   .Does(() =>
 {
   // Copy net452 binaries.
-  CopyFiles(GetFiles("src/RabbitShelf/bin/" + configuration + "/net452/*.dll")
-    + GetFiles("src/RabbitShelf/bin/" + configuration + "/net452/*.xml")
-    + GetFiles("src/RabbitShelf/bin/" + configuration + "/net452/*.pdb")
+  CopyFiles(GetFiles("src/**/bin/" + configuration + "/net452/*.dll")
+    + GetFiles("src/**/bin/" + configuration + "/net452/*.xml")
+    + GetFiles("src/**/bin/" + configuration + "/net452/*.pdb")
+    + GetFiles("src/**/bin/" + configuration + "/net452/*.exe")
     , outputBinariesNet452);
 
   // Copy netstandard binaries.
-  CopyFiles(GetFiles("src/RabbitShelf/bin/" + configuration + "/netstandard1.6/*.dll")
-    + GetFiles("src/RabbitShelf/bin/" + configuration + "/netstandard1.6/*.xml")
-    + GetFiles("src/RabbitShelf/bin/" + configuration + "/netstandard1.6/*.pdb")
+  CopyFiles(GetFiles("src/**/bin/" + configuration + "/netstandard1.6/*.dll")
+    + GetFiles("src/**/bin/" + configuration + "/netstandard1.6/*.xml")
+    + GetFiles("src/**/bin/" + configuration + "/netstandard1.6/*.pdb")
+    + GetFiles("src/**/bin/" + configuration + "/netstandard1.6/*.exe")
     , outputBinariesNetstandard);
-
 });
 
 Task("Package")
@@ -143,37 +144,10 @@ Task("Package-NuGet")
   }
 });
 
-
-
-Task("Update-Version")
-  .Does(() =>
-{
-  if(string.IsNullOrWhiteSpace(version)) {
-    throw new CakeException("No version specified!");
-  }
-
-  UpdateProjectJsonVersion(version, projectJsonFiles);
-});
-
 ///////////////////////////////////////////////////////////////
-
-public void UpdateProjectJsonVersion(string version, FilePathCollection filePaths)
-{
-  Verbose(logAction => logAction("Setting version to {0}", version));
-  foreach (var file in filePaths)
-  {
-    var project = System.IO.File.ReadAllText(file.FullPath, Encoding.UTF8);
-
-    project = System.Text.RegularExpressions.Regex.Replace(project, "(\"version\":\\s*)\".+\"", "$1\"" + version + "\"");
-
-    System.IO.File.WriteAllText(file.FullPath, project, Encoding.UTF8);
-  }
-}
-
 
 Task("Default")
   .IsDependentOn("Test")
-  .IsDependentOn("Update-Version")
   .IsDependentOn("Package-NuGet")
   .IsDependentOn("Package");
 
